@@ -83,4 +83,3 @@ const minions = () => {
 
 minions();
 
-// module.exports = index;
