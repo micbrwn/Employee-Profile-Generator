@@ -26,7 +26,7 @@ const employeesTemplate = (team) => {
   function generateManager(manager) {
     let managerCard = `
         <div class="card employee-card" style="width: 18rem;">
-    <div class="card-header">
+    <div class="bg-danger card-header">
         <h2 class="card-title">${manager.getName()}</h2>
         <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
     </div>
@@ -38,6 +38,7 @@ const employeesTemplate = (team) => {
         </ul>
     </div>
 </div>
+\n
     `
     htmlTemplate.push(managerCard)
   }
@@ -45,7 +46,7 @@ const employeesTemplate = (team) => {
   function generateEngineer(engineer) {
     let engineerCard = `
     <div class="card employee-card" style="width: 18rem;">
-    <div class="card-header">
+    <div class="bg-primary card-header">
         <h2 class="card-title">${engineer.getName()}</h2>
         <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
     </div>
@@ -57,6 +58,7 @@ const employeesTemplate = (team) => {
         </ul>
     </div>
 </div>
+\n
     `
     htmlTemplate.push(engineerCard)
   }
@@ -64,7 +66,7 @@ const employeesTemplate = (team) => {
   function generateIntern(intern){
    let internCard = `
     <div class="card employee-card" style="width: 18rem;">
-    <div class="card-header">
+    <div class="bg-success card-header">
         <h2 class="card-title">${intern.getName()}</h2>
         <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
     </div>
@@ -76,10 +78,11 @@ const employeesTemplate = (team) => {
         </ul>
     </div>
 </div>
+\n
    `
    htmlTemplate.push(internCard)
   }
-
+  // style="width: 18rem;" style="margin: 10px;"
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -107,16 +110,16 @@ const employeesTemplate = (team) => {
           <div class="container">
             <div class="row">
               <div class="team-area col-12 d-flex flex-wrap justify-content-center">
-                <div class="card employee-card">
-                  ${htmlTemplate.join()};
-                </div>
+           
+                  ${htmlTemplate.join(' ')}
+            
               </div>
             </div>
           </div>
         </main>
     </body>
     </html>`
-};
+}
 
 const generateHTML = (team) => {
   fs.writeFile('./dist/team.html', employeesTemplate(team), () => {
